@@ -1,3 +1,12 @@
 [submodule ".vim/plugged/syntastic"]
 	path = .vim/plugged/syntastic
 	url = https://github.com/vim-syntastic/syntastic.git
+[submodule ".vim/plugged/space-vim-theme"]
+	path = .vim/plugged/space-vim-theme
+	url = https://github.com/liuchengxu/space-vim-theme.git
+[submodule ".vim/plugged/vim-airline"]
+	path = .vim/plugged/vim-airline
+	url = https://github.com/vim-airline/vim-airline.git
+[submodule ".vim/plugged/vim-airline-themes"]
+	path = .vim/plugged/syntastic
+	url = https://github.com/vim-airline/vim-airline-themes
