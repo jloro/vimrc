@@ -8,5 +8,5 @@
 	path = .vim/plugged/vim-airline
 	url = https://github.com/vim-airline/vim-airline.git
 [submodule ".vim/plugged/vim-airline-themes"]
-	path = .vim/plugged/syntastic
+	path = .vim/plugged/vim-airline-themes
 	url = https://github.com/vim-airline/vim-airline-themes
