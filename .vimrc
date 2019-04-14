@@ -76,7 +76,7 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 autocmd BufEnter * lcd %:p:h
 
 nmap <f1> :FortyTwoHeader<CR>
-set backspace=indent,eol,start
+set backspace=2
 nmap <bs> <bs>
 
 filetype plugin indent on
@@ -90,7 +90,6 @@ set softtabstop=4
 set smartindent
 set cindent
 
-set colorcolumn=80
 
 " Search settings.
 " Highlight search results.
@@ -98,3 +97,21 @@ set hlsearch
 " Incremental search: find as you type.
 set incsearch
 
+
+" Tab utils
+nnoremap <tab><Up> :tabedit<cr>
+nnoremap <tab><Right> :tabnext<cr>
+nnoremap <tab><Left> :tabprevious<cr>
+
+" The Gray Colomn of Death
+set cc=80
+highlight ColorColumn ctermbg=0*
+
+highlight NERDTreeUp ctermfg=6
+highlight NERDTreeDir ctermfg=6
+highlight NERDTreeDirSlash ctermfg=6
+
+highlight VertSplit ctermfg=0
+
+
+syntax on
