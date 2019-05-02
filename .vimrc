@@ -1,6 +1,6 @@
 call plug#begin('~/.vim/plugged')
 
-Plug 'liuchengxu/space-vim-theme'
+Plug 'liuchengxu/space-vim-dark'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-syntastic/syntastic'
@@ -8,11 +8,12 @@ Plug 'scrooloose/nerdtree'
 Plug 'pandark/42header.vim'
 Plug 'othree/vim-autocomplpop'
 Plug 'vim-scripts/L9'
+Plug 'tikhomirov/vim-glsl'
+Plug 'gcmt/taboo.vim'
 
 call plug#end()
 
-set background=dark
-colorscheme space_vim_theme
+colorscheme space-vim-dark
 let g:airline_theme='deus'
 
 " status line
@@ -45,8 +46,7 @@ set titleold=
 "Hightlight line cursor
 set cursorline
 
-"Disable beeping
-set visualbell
+set novisualbell
 
 "Speed Redraw
 set lazyredraw
@@ -54,7 +54,7 @@ set wildmenu                            " Use wildmenu auto completion
 set wildmode=list:longest       " Set options for auto completion
 set complete=.,w,b,t,u
 set showfulltag                         " Show whole tag, not just function name, when
-                                                        " autocompleting by tag
+" autocompleting by tag
 "One clipboard
 set clipboard=unnamed
 
@@ -82,8 +82,7 @@ nmap <bs> <bs>
 filetype plugin indent on
 " show existing tab with 4 spaces width
 set tabstop=4
-" On pressing tab, insert 4 spaces
-set expandtab
+set noexpandtab
 " when indenting with '>', use 4 spaces width
 set shiftwidth=4
 set softtabstop=4
@@ -113,5 +112,13 @@ highlight NERDTreeDirSlash ctermfg=6
 
 highlight VertSplit ctermfg=0
 
-
 syntax on
+
+set showtabline=2
+
+let g:taboo_tab_format="  %f  "
+
+augroup project
+	autocmd!
+	autocmd BufRead,BufNewFile *.h,*.c set filetype=c
+augroup END
