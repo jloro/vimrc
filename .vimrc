@@ -122,3 +122,44 @@ augroup project
 	autocmd!
 	autocmd BufRead,BufNewFile *.h,*.c set filetype=c
 augroup END
+
+set directory^=$HOME/.vim/tmp//
+
+" help for generating C++ file
+
+function! s:insert_gates()
+  let gatename = substitute(toupper(expand("%:t")), "\\.", "_", "g")
+  execute "normal! i#ifndef " . gatename
+  execute "normal! o# define " . gatename . "\n"
+  execute "normal! o#endif"
+  execute "normal! kO\n"
+endfunction
+
+function! s:insert_class()
+  let gatename = substitute(expand("%:r"), "\\.class", "", "g")
+  execute "normal! iclass " . gatename
+  execute "normal! o{"
+  execute "normal! opublic:"
+  execute "normal! o\t" . gatename . "(void);"
+  execute "normal! o\t" . gatename . "(const " . gatename . " & src);"
+  execute "normal! o\tvirtual\t~" . gatename . "();"
+  execute "normal! o"
+  execute "normal! o\t" . gatename . " &\toperator=(const " . gatename . " & rhs);"
+  execute "normal! oprivate:"
+  execute "normal! o};"
+endfunction
+
+augroup CFile
+	autocmd!
+	autocmd BufNewFile *.h call <SID>insert_gates()
+	autocmd BufNewFile *.hpp call <SID>insert_gates()
+	autocmd BufNewFile *.hpp call <SID>insert_class()
+augroup END
+
+" Comments for C++
+iabbrev <c>		/*<enter><space>Constructors/Desctructors<enter>/
+iabbrev <o>		/*<enter><space>Operators<enter>/
+iabbrev <a>		/*<enter><space>Accessors<enter>/
+iabbrev <u>		/*<enter><space>Utilities<enter>/
+iabbrev <e>		/*<enter><space>Exception<enter>/
+iabbrev <s>		/*<enter><space>Static<enter>/
